@@ -22,7 +22,7 @@ saddle.angle = 90 * pi / 180;
 saddle.wireRadius = 0.25;
 saddle.wireSpace = 0.25;
 saddle.wireSpaceFromCenter = 2*saddle.wireRadius + saddle.wireSpace;
-saddle.rotation = pi/4;
+saddle.rotation = saddle.angle / 2;    % Rotation along Z-axis
 saddle.material = 1;  % 0: Perfect Electrical Conductor (PEC)
                       % 1: Copper
 
@@ -33,7 +33,7 @@ port_resist = 1000;
 enableMatchingCapa = 0;
 enableTuningCapa = 0;
 enableBoreShield = 1;
-enableGeometricPlot = 0;
+enableGeometricPlot = 1;
 enableStartSimulation = 1;
 exciteMode = 1;     % 0: Sinus (f = f0)
                     % 1: Gaussian (f0-fc < f < f0+fc)
@@ -332,3 +332,4 @@ disp(['Dumping resonant H-field XY at f = ' int2str(Freq) ' to vtk file, use Par
 ConvertHDF5_VTK([Sim_Path '/Ht_xy.h5'],[Sim_Path '/Hf_xy_'],'Frequency',Freq,'FieldName','H-Field');
 disp(['Dumping resonant H-field ZY at f = ' int2str(Freq) ' to vtk file, use Paraview to visualize']);
 ConvertHDF5_VTK([Sim_Path '/Ht_zy.h5'],[Sim_Path '/Hf_zy_'],'Frequency',Freq,'FieldName','H-Field');
+
